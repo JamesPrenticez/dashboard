@@ -1,0 +1,2 @@
+TAILWIND SHADES
+cmd + k + g
