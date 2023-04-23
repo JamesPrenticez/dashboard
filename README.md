@@ -2,3 +2,5 @@
 
 TAILWIND SHADES
 cmd + k + g
+
+(MUI Icons)[https://mui.com/material-ui/material-icons/]

@@ -10,7 +10,10 @@ type ModeType = "light" | "dark";
 export const tokens = (mode:ModeType) => ({
   ...(mode === 'dark' ? {
       // Dark Mode
-      gray: {
+      white: {
+        100: "#F8F8F8"
+      },
+      grey: {
         100: "#e0e0e0",
         200: "#c2c2c2",
         300: "#a3a3a3",
@@ -22,7 +25,7 @@ export const tokens = (mode:ModeType) => ({
         900: "#141414"
       },
       primary: {
-        100: "#d0d1d5",
+        100: "#F8F8F8",
         200: "#a1a4aa",
         300: "#727680",
         400: "#434955",
@@ -67,16 +70,19 @@ export const tokens = (mode:ModeType) => ({
       }
     } : {
       // Light Mode
-      gray: {
-        100: "#e0e0e0",
-        200: "#c2c2c2",
-        300: "#a3a3a3",
-        400: "#858585",
+      white: {
+        100: "#F8F8F8"
+      },
+      grey: {
+        100: "#141414",
+        200: "#292929",
+        300: "#3d3d3d",
+        400: "#525252",
         500: "#666666",
-        600: "#525252",
-        700: "#3d3d3d",
-        800: "#292929",
-        900: "#141414"
+        600: "#858585",
+        700: "#a3a3a3",
+        800: "#c2c2c2",
+        900: "#e0e0e0"
       },
       primary: {
         100: "#040509",
@@ -120,7 +126,7 @@ export const tokens = (mode:ModeType) => ({
         600: "#868dfb",
         700: "#a4a9fc",
         800: "#c3c6fd",
-        900: "#e1e2fe",
+        900: "#e1e2fe"
       }
     }
   )
@@ -141,9 +147,9 @@ export const themeSettings = (mode:ModeType) => {
           main: colors.greenAccent[500]
         },
         neutral: {
-          main: colors.gray[500],
-          dark: colors.gray[700],
-          light: colors.gray[100]
+          main: colors.grey[500],
+          dark: colors.grey[700],
+          light: colors.grey[100]
         },
         background: {
           default: colors.primary[500]
@@ -156,9 +162,9 @@ export const themeSettings = (mode:ModeType) => {
           main: colors.greenAccent[500]
         },
         neutral: {
-          main: colors.gray[500],
-          dark: colors.gray[700],
-          light: colors.gray[100]
+          main: colors.grey[500],
+          dark: colors.grey[700],
+          light: colors.grey[100]
         },
         background: {
           default: "#fcfcfc"
