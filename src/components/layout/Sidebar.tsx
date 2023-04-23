@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, type ReactElement } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import { Sidebar as ProSidebar, Menu, MenuItem, SubMenu, useProSidebar, MenuItemStyles } from "react-pro-sidebar"
 import { Box, IconButton, Switch, Typography, useTheme } from "@mui/material"
@@ -9,19 +9,20 @@ import KeyboardArrowLeftOutlinedIcon from '@mui/icons-material/KeyboardArrowLeft
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import UserAvatar from './Avatar';
 import Logo from './Logo';
+import { useHexOpacity } from '../../hooks';
 
-const Sidebar = () => {
+const Sidebar = (): ReactElement => {
   const theme = useTheme();
   const colors =  tokens(theme.palette.mode)
+  const getHexOpacity = useHexOpacity();
   const { collapseSidebar, collapsed } = useProSidebar();
-  const [selected, setSelected] = useState("Dashboard")
 
   const menuItemStyles: MenuItemStyles = {
     button: ({ level, active, disabled }) => {
       if (level === 0)
         return {
           '&:hover': {
-            color: "#F8F8F8 !important",
+            color: theme.palette.text.white + "!important",
             backgroundColor: colors.greenAccent[500],
           },
         };
@@ -32,7 +33,7 @@ const Sidebar = () => {
     <Box display="flex" height="100%">
     <ProSidebar backgroundColor={colors.primary[400]}
       rootStyles={{
-        borderColor: colors.greenAccent[500] + "90",
+        borderColor: colors.greenAccent[500] + getHexOpacity(50),
       }}
     >
       <Menu menuItemStyles={menuItemStyles}>
@@ -41,7 +42,7 @@ const Sidebar = () => {
         <Box
           display="flex"
           m="10px 0 20px 0"
-          color={colors.grey[100]}
+          color={theme.palette.text.primary}
         >
           {!collapsed && (
             <Box
@@ -57,8 +58,8 @@ const Sidebar = () => {
               <Logo width={32}/>
             </Box>
           )}
-          <Box margin="0 auto">
-            <IconButton onClick={() => collapseSidebar(!collapsed)}>
+          <Box margin="5px auto 0 auto">
+            <IconButton onClick={() => collapseSidebar(!collapsed)} sx={{color: "inherit"}} >
               {collapsed ? (
                 <MenuOutlinedIcon sx={{fontSize: "24px"}}/>
                 ) : (
@@ -66,7 +67,6 @@ const Sidebar = () => {
               )}
             </IconButton>
           </Box>
-
         </Box>
 
         {/* USER AVARTAR */}
@@ -81,7 +81,7 @@ const Sidebar = () => {
               variant="body2"
               fontWeight={600}
               m="0 0 5px 15px"
-              color={colors.primary[100]}
+              color={theme.palette.text.primary}
               sx={{ opacity: collapsed ? 0 : 0.7, letterSpacing: '0.5px' }}
             >
               {group.name}
@@ -95,7 +95,7 @@ const Sidebar = () => {
                     to={item.url}
                     style={({ isActive }) => ({
                       padding: '5px 35px 5px 20px',
-                      color: isActive ? colors.white[100] : colors.primary[100],
+                      color: isActive ? theme.palette.text.white : theme.palette.text.primary,
                       backgroundColor: isActive ? colors.greenAccent[500] : '',
 
                     })}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, type ReactElement } from 'react'
 import { Box, IconButton, InputBase, useTheme } from "@mui/material"
 import { ColorModeContext, tokens } from '../../styles/theme'
 import LightModeOutlinedIcon  from "@mui/icons-material/LightModeOutlined"
@@ -8,9 +8,7 @@ import SettingsOutlinedIcon  from "@mui/icons-material/SettingsOutlined"
 import PersonOutlinedIcon  from "@mui/icons-material/PersonOutlined"
 import SearchIcon  from "@mui/icons-material/Search"
 
-type Props = {}
-
-const Topbar = (props: Props) => {
+const Topbar = (): ReactElement => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const colorMode = useContext(ColorModeContext)

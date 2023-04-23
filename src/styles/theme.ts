@@ -10,9 +10,6 @@ type ModeType = "light" | "dark";
 export const tokens = (mode:ModeType) => ({
   ...(mode === 'dark' ? {
       // Dark Mode
-      white: {
-        100: "#F8F8F8"
-      },
       grey: {
         100: "#e0e0e0",
         200: "#c2c2c2",
@@ -70,9 +67,6 @@ export const tokens = (mode:ModeType) => ({
       }
     } : {
       // Light Mode
-      white: {
-        100: "#F8F8F8"
-      },
       grey: {
         100: "#141414",
         200: "#292929",
@@ -151,6 +145,14 @@ export const themeSettings = (mode:ModeType) => {
           dark: colors.grey[700],
           light: colors.grey[100]
         },
+        text: {
+          primary: "#F8F8F8",
+          secondary: "#333333",
+          disabled: "#CCCCCC",
+          white: "#F8F8F8",
+          black: "#333333",
+          accent: colors.greenAccent[500]
+        },
         background: {
           default: colors.primary[500]
         }
@@ -166,8 +168,16 @@ export const themeSettings = (mode:ModeType) => {
           dark: colors.grey[700],
           light: colors.grey[100]
         },
+        text: {
+          primary: "#333333",
+          secondary: "#F8F8F8",
+          disabled: "#CCCCCC",
+          white: "#F8F8F8",
+          black: "#333333",
+          accent: colors.greenAccent[500]
+        },
         background: {
-          default: "#fcfcfc"
+          default: "#f9fafb"
         }
       })
     },

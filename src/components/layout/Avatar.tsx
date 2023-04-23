@@ -1,12 +1,13 @@
 import React, { type ReactElement } from "react";
 import { Avatar, Box, Typography, useTheme } from "@mui/material";
-import { getRandomPredefinedColor } from "../../utils/getRandomPredefinedColor";
+import { getPredefinedColor } from "../../hooks";
 import { tokens } from "../../styles/theme";
 import { user } from "../../constants"
 
 const UserAvatar = (): ReactElement => {
   const theme = useTheme();
   const colors =  tokens(theme.palette.mode)
+
 
   if (user) {
     return (
@@ -19,12 +20,12 @@ const UserAvatar = (): ReactElement => {
             sx={{
               width:"100px",
               height:"100px",
-              color: "white",
-              bgcolor: getRandomPredefinedColor(`${user.initials}`),
+              color: theme.palette.text.white,
+              bgcolor: getPredefinedColor(`${user.initials}`),
               cursor: "pointer"
             }}
           >
-            <Typography variant="h1" fontWeight={600}>
+            <Typography variant="h1" fontWeight={700}>
               {user.initials}
             </Typography>
           </Avatar>
@@ -32,7 +33,7 @@ const UserAvatar = (): ReactElement => {
           {/* USERNAME */}
           <Typography
             variant="h3"
-            color={colors.grey[100]}
+            color={theme.palette.text.primary}
             fontWeight="bold"
             sx={{
               m: "10px 0 0 0"
@@ -44,7 +45,7 @@ const UserAvatar = (): ReactElement => {
           {/* USER ROLE */}
           <Typography
             variant="h5"
-            color={colors.greenAccent[500]}
+            color={theme.palette.text.accent}
             fontWeight="bold"
             sx={{
               m: "10px 0 0 0"

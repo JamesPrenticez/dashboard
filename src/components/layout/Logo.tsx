@@ -25,7 +25,7 @@ const Logo = ({
         </svg>
       </Box>
       <Box component="span" flex={1}>
-        <Typography variant="h3" fontWeight={600} textAlign="center">
+        <Typography variant="h3" fontWeight={700} textAlign="center">
           {project.name.toUpperCase()}
         </Typography>
       </Box>

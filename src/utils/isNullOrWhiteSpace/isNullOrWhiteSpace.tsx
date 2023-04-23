@@ -1,4 +1,4 @@
-const isNullOrWhiteSpace = (input: string | null | undefined): boolean => {
+export const isNullOrWhiteSpace = (input: string | null | undefined): boolean => {
   if (input === undefined) {
     return true;
   }
@@ -10,5 +10,3 @@ const isNullOrWhiteSpace = (input: string | null | undefined): boolean => {
   }
   return false;
 };
-
-export default isNullOrWhiteSpace;
