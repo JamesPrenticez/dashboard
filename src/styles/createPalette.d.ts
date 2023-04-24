@@ -6,3 +6,10 @@ declare module "@mui/material/styles" {
     accent: string;
   }
 }
+declare module "@mui/material/styles" {
+  interface CommonColors {
+    white: string;
+    black: string;
+    accent: string;
+  }
+}

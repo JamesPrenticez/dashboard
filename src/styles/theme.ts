@@ -83,44 +83,44 @@ export const tokens = (mode:ModeType) => ({
         200: "#080b11",
         300: "#0c101a",
         400: "#f2f0f0",
-        500: "#141b2b",
+        500: "#dcd9d9",
         600: "#434955",
         700: "#727680",
         800: "#a1a4aa",
         900: "#d0d1d5"
       },
       greenAccent: {
-        100: "#0f2922",
-        200: "#1e5245",
-        300: "#2e7c67",
-        400: "#3da58a",
+        100: "#dbf5ee",
+        200: "#b7ebde",
+        300: "#94e2cd",
+        400: "#70d8bd",
         500: "#4cceac",
-        600: "#70d8bd",
-        700: "#94e2cd",
-        800: "#b7ebde",
-        900: "#dbf5ee"
+        600: "#3da58a",
+        700: "#2e7c67",
+        800: "#1e5245",
+        900: "#0f2922"
       },
       redAccent: {
-        100: "#2c100f",
-        200: "#58201e",
-        300: "#832f2c",
-        400: "#af3f3b",
+        100: "#f8dcdb",
+        200: "#f1b9b7",
+        300: "#e99592",
+        400: "#e2726e",
         500: "#db4f4a",
-        600: "#e2726e",
-        700: "#e99592",
-        800: "#f1b9b7",
-        900: "#f8dcdb"
+        600: "#af3f3b",
+        700: "#832f2c",
+        800: "#58201e",
+        900: "#2c100f"
       },
       blueAccent: {
-        100: "#151632",
-        200: "#2a2d64",
-        300: "#3e4396",
-        400: "#535ac8",
+        100: "#e1e2fe",
+        200: "#c3c6fd",
+        300: "#a4a9fc",
+        400: "#868dfb",
         500: "#6870fa",
-        600: "#868dfb",
-        700: "#a4a9fc",
-        800: "#c3c6fd",
-        900: "#e1e2fe"
+        600: "#535ac8",
+        700: "#3e4396",
+        800: "#2a2d64",
+        900: "#151632"
       }
     }
   )
@@ -135,11 +135,14 @@ export const themeSettings = (mode:ModeType) => {
       mode: mode,
       ...(mode == "dark" ? {
         primary: {
-          main: colors.primary[500]
+          main: "#333333"
         },
         secondary: {
-          main: colors.greenAccent[500]
+          main: "#F8F8F8"
         },
+        // action: {
+        //   main: colors.greenAccent[500]
+        // },
         neutral: {
           main: colors.grey[500],
           dark: colors.grey[700],
@@ -155,6 +158,10 @@ export const themeSettings = (mode:ModeType) => {
         },
         background: {
           default: colors.primary[500]
+        },
+        common: {
+          white: "#FFFFFF",
+          black: "#0000000"
         }
       } : {
         primary: {
@@ -178,6 +185,10 @@ export const themeSettings = (mode:ModeType) => {
         },
         background: {
           default: "#f9fafb"
+        },
+        common: {
+          white: "#FFFFFF",
+          black: "#0000000"
         }
       })
     },

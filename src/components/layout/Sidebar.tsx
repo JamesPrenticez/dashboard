@@ -21,9 +21,10 @@ const Sidebar = (): ReactElement => {
     button: ({ level, active, disabled }) => {
       if (level === 0)
         return {
+            borderLeft: "solid 3px transparent",
           '&:hover': {
-            color: theme.palette.text.white + "!important",
-            backgroundColor: colors.greenAccent[500],
+            backgroundColor: colors.primary[500],
+            borderColor: colors.greenAccent[500]
           },
         };
     },
@@ -95,9 +96,9 @@ const Sidebar = (): ReactElement => {
                     to={item.url}
                     style={({ isActive }) => ({
                       padding: '5px 35px 5px 20px',
-                      color: isActive ? theme.palette.text.white : theme.palette.text.primary,
-                      backgroundColor: isActive ? colors.greenAccent[500] : '',
-
+                      color: theme.palette.text.primary,
+                      backgroundColor: isActive ? colors.primary[500] : '',
+                      borderColor: isActive ? colors.greenAccent[500] : ''
                     })}
                   />}
               > 

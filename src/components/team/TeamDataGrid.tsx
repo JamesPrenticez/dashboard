@@ -9,10 +9,12 @@ import { type ITeam } from "../../models";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined"
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined"
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined"
+import { useHexOpacity } from '../../hooks'
 
 const TeamDataGrid = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+  const getHexOpacity = useHexOpacity()
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID"},
@@ -23,24 +25,34 @@ const TeamDataGrid = () => {
     { field: "access", headerName: "Acess Level", flex: 1, 
     renderCell: ({ row: { access } }: { row: ITeam }) => {
       return (
-        <Box
-          width="60%"
-          m="0 auto"
-          p="5px"
-          display="flex"
-          bgcolor={
-            access === "admin"
-            ? colors.greenAccent[600]
-            : colors.greenAccent[600]
-          }
-          borderRadius="4px"
-        >
-          {access === "admin" && <AdminPanelSettingsOutlinedIcon />}  
-          {access === "manager" && <SecurityOutlinedIcon />}  
-          {access === "user" && <LockOpenOutlinedIcon />} 
-          <Typography color={theme.palette.text.white} marginLeft={"5px"}>
-            {access}
-          </Typography> 
+        <Box display="flex" width="60%" borderRadius="4px" bgcolor={theme.palette.common.white}>
+          <Box
+            width="100%"
+            m="0 auto"
+            p="5px"
+            display="flex"
+            bgcolor={
+              access === "admin" ? colors.redAccent[500] + getHexOpacity(40) :
+              access === "manager" ? colors.greenAccent[500] + getHexOpacity(40) :
+              colors.blueAccent[500] + getHexOpacity(40)
+            }
+            color={
+              access === "admin" ? colors.redAccent[600] :
+              access === "manager" ? colors.greenAccent[600] :
+              colors.blueAccent[600]
+            }
+            borderRadius="4px"
+            position="relative"
+          >
+            <Box position="absolute">
+              {access === "admin" && <AdminPanelSettingsOutlinedIcon />}  
+              {access === "manager" && <SecurityOutlinedIcon />}  
+              {access === "user" && <LockOpenOutlinedIcon />} 
+            </Box>
+            <Typography textAlign="center" width="100%" sx={{textTransform: "capitalize"}} fontWeight={600}>
+              {access}
+            </Typography> 
+          </Box>  
         </Box>  
       )
     }},
