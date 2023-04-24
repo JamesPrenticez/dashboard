@@ -22,7 +22,7 @@ const TeamDataGrid = () => {
     { field: "age", headerName: "Age", type:"number", headerAlign: "left", align: "left"},
     { field: "phone", headerName: "Phone Number", flex: 1},
     { field: "email", headerName: "Email", flex: 1},
-    { field: "access", headerName: "Acess Level", flex: 1, 
+    { field: "access", headerName: "Acess Level", headerAlign: "center", align: "center", flex: 1, 
     renderCell: ({ row: { access } }: { row: ITeam }) => {
       return (
         <Box display="flex" width="60%" borderRadius="4px" bgcolor={theme.palette.common.white}>
@@ -59,8 +59,39 @@ const TeamDataGrid = () => {
   ]
 
   return (
-    <Box m="5px 0 0 0" height="75vh">
+    <Box 
+      height="75vh"
+      sx={{
+        "& .MuiDataGrid-root": {
+          border: "none"
+        },
+        "& .MuiDataGrid-cell": {
+          borderBottom: "none"
+        },
+        "& .MuiDataGrid-columnHeaders": {
+          backgroundColor: colors.purpleAccent[700],
+          borderBottom: "none",
+        },
+        "& .MuiDataGrid-columnHeaderTitle": {
+          paddingY: "2px",
+          fontWeight: 700,
+          fontSize: 14
+        },
+        "& .name-column--cell": {
+          color: colors.purpleAccent[300]
+        },
+        "& .MuiDataGrid-virtualScroller": {
+          backgroundColor: colors.primary[400]
+        },
+        "& .MuiDataGrid-footerContainer": {
+          borderTop: "none",
+          backgroundColor: colors.purpleAccent[700]
+        }
+      }}
+    >
       <DataGrid
+        columnHeaderHeight={50}
+        hideFooterPagination={true}
         rows={mockDataTeam}
         columns={columns}
       />

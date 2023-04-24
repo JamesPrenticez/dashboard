@@ -13,12 +13,12 @@ const PageHeader = ({title, subTitle}: PageHeaderProps): ReactElement => {
   const getHexOpacity = useHexOpacity();
 
   return (
-    <Box mb="30px">
+    <Box mb="15px">
       <Typography 
         variant='h2'
         color={theme.palette.text.primary}
         fontWeight="bold"
-        marginBottom={"5px"}
+        marginBottom="5px"
       >
         {title}
       </Typography>
