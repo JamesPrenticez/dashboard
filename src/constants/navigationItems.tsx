@@ -1,4 +1,5 @@
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
@@ -10,6 +11,7 @@ import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
+
 import { INavigationGroup } from '../models/constants/INavigationItems';
 
 export const navigationItems: Array<INavigationGroup> = [
@@ -18,7 +20,6 @@ export const navigationItems: Array<INavigationGroup> = [
     icon:  <HomeOutlinedIcon/>,
     items: [
       {name: "Home", url: "/", icon: <HomeOutlinedIcon/>},
-      {name: "Team", url: "/team", icon: <PeopleOutlinedIcon/>}, 
       {name: "Contacts", url: "/contacts", icon: <ContactsOutlinedIcon/>}, 
       {name: "Profile", url: "/profile", icon: <FormatColorTextOutlinedIcon/>}, 
     ]
@@ -40,6 +41,13 @@ export const navigationItems: Array<INavigationGroup> = [
       {name: "Pie", url: "/pie", icon: <PieChartOutlinedIcon/>}, 
       {name: "Line", url: "/line", icon: <QueryStatsOutlinedIcon/>}, 
       {name: "Geography", url: "/geography", icon: <MapOutlinedIcon/>}
+    ]
+  },
+  {
+    name: "Admin",
+    icon:  <AdminPanelSettingsOutlinedIcon/>,
+    items: [
+      {name: "Team Permissions", url: "/team_permissions", icon: <PeopleOutlinedIcon/>}, 
     ]
   },
 ]

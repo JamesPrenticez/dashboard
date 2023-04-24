@@ -1,6 +1,7 @@
-import { tokens } from "../styles/theme";
+import { type ITeam } from "../../models";
+import { tokens } from "../../styles/theme";
 
-export const mockDataTeam = [
+export const mockDataTeam:ITeam[] = [
   {
     id: 1,
     name: "Jon Snow",

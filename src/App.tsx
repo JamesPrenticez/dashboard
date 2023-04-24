@@ -29,7 +29,7 @@ const App = () => {
               <Topbar />
               <Routes>
                 <Route path="/" element={<Dashboard />}/>
-                <Route path="/team" element={<Team />}/>
+                <Route path="/team_permissions" element={<Team />}/>
                 <Route path="/contacts" element={<Contacts />}/>
                 <Route path="/profile" element={<Profile />}/>
                 <Route path="/invoices" element={<Invoices />}/>
