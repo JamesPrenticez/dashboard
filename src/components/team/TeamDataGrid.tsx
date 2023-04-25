@@ -75,7 +75,14 @@ const TeamDataGrid = () => {
         "& .MuiDataGrid-columnHeaderTitle": {
           paddingY: "2px",
           fontWeight: 700,
-          fontSize: 14
+          fontSize: 14,
+          userSelect: "none"
+        },
+        "& .MuiDataGrid-columnSeparator": {
+          display: "none !important",
+        },
+        "& .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-columnHeader:focus": {
+          outline: "none !important",
         },
         "& .name-column--cell": {
           color: colors.purpleAccent[300]
@@ -86,6 +93,18 @@ const TeamDataGrid = () => {
         "& .MuiDataGrid-footerContainer": {
           borderTop: "none",
           backgroundColor: colors.purpleAccent[700]
+        },
+        "& .MuiDataGrid-cell:focus-within, & .MuiDataGrid-cell:focus": {
+          outline: "none !important",
+        },
+        "& .MuiDataGrid-root .MuiDataGrid-row:hover": {
+          backgroundColor: colors.primary[500],
+        },
+        "& .MuiDataGrid-root .MuiDataGrid-row.Mui-selected": {
+          backgroundColor: colors.primary[500],
+        },
+        "& .MuiDataGrid-root .MuiDataGrid-row:active": {
+          backgroundColor: colors.primary[500],
         }
       }}
     >

@@ -1,4 +1,4 @@
-[https://youtu.be/wYpCWwD1oz0?t=6116]
+[https://youtu.be/wYpCWwD1oz0?t=6811]
 
 TAILWIND SHADES
 cmd + k + g

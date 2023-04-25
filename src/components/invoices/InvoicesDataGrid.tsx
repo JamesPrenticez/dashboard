@@ -1,28 +1,37 @@
 import React from 'react'
-import { Box, useTheme } from '@mui/material'
-import { DataGrid, GridToolbar, type GridColDef, type GridRowParams  } from '@mui/x-data-grid'
+import { Box, Typography, useTheme } from '@mui/material'
+import { DataGrid, type GridColDef, type GridRowParams, type GridRenderCellParams  } from '@mui/x-data-grid'
 import { tokens } from '../../styles/theme'
-import { mockDataContacts } from '../../constants/data/mockData'
+import { mockDataInvoices } from '../../constants/data/mockData'
 import PageHeader from '../layout/PageHeader'
-import { type ITeam } from "../../models";
+import { type IInvoices } from "../../models";
 
-import { useHexOpacity } from '../../hooks'
+import { useHexOpacity, useCurrencyFormatter } from '../../hooks'
 
-const ContactsDataGrid = () => {
+const InvoicesDataGrid = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const getHexOpacity = useHexOpacity()
+  const currencyFormatter = useCurrencyFormatter()
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", flex: 0.5},
-    { field: "registrarId", headerName: "Registrar ID"},
     { field: "name", headerName: "Name", flex: 1, cellClassName:"name-column--cell"},
-    { field: "age", headerName: "Age", type:"number", headerAlign: "left", align: "left"},
     { field: "phone", headerName: "Phone Number", flex: 1},
     { field: "email", headerName: "Email", flex: 1},
-    { field: "address", headerName: "Address", flex: 1},
-    { field: "city", headerName: "City", flex: 1},
-    { field: "zipCode", headerName: "Zip Code", flex: 1},
+    { field: "date", headerName: "Date", flex: 1},
+    { field: "cost", headerName: "Cost", flex: 1, 
+    renderCell: (params: GridRenderCellParams) => {
+      return (
+        <Typography 
+          // color={theme.palette.text.accent}
+          color={colors.greenAccent[500]}
+          fontWeight={700}
+        >
+          {currencyFormatter.format((params.row as IInvoices).cost)}
+        </Typography>
+      )
+    }},
   ]
 
   return (
@@ -45,12 +54,6 @@ const ContactsDataGrid = () => {
           fontSize: 14,
           userSelect: "none"
         },
-        "& .MuiDataGrid-columnSeparator": {
-          display: "none !important",
-        },
-        "& .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-columnHeader:focus": {
-          outline: "none !important",
-        },
         "& .name-column--cell": {
           color: colors.purpleAccent[300]
         },
@@ -61,8 +64,14 @@ const ContactsDataGrid = () => {
           borderTop: "none",
           backgroundColor: colors.purpleAccent[700]
         },
-        "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-          color: `${theme.palette.text.primary} !important`
+        // "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+        //   color: `${theme.palette.text.primary} !important`
+        // },
+        "& .MuiDataGrid-columnSeparator": {
+          display: "none !important",
+        },
+        "& .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-columnHeader:focus": {
+          outline: "none !important",
         },
         "& .MuiDataGrid-cell:focus-within, & .MuiDataGrid-cell:focus": {
           outline: "none !important",
@@ -75,20 +84,21 @@ const ContactsDataGrid = () => {
         },
         "& .MuiDataGrid-root .MuiDataGrid-row:active": {
           backgroundColor: colors.primary[500],
-        }
+        },
+        "& .MuiCheckbox-root": {
+          color: `${colors.greenAccent[500]} !important`
+        },
       }}
     >
       <DataGrid
         columnHeaderHeight={50}
         hideFooterPagination={true}
-        rows={mockDataContacts}
+        rows={mockDataInvoices}
         columns={columns}
-        components={{
-          Toolbar: GridToolbar
-        }}
+        checkboxSelection={true}
       />
     </Box>
   )
 }
 
-export default ContactsDataGrid
+export default InvoicesDataGrid
